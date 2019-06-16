@@ -1,26 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Routes } from './app/routes';
+import { MariaCtx } from './app/context/Maria';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Using context Api
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <br />
+        <Routes />
       </header>
     </div>
   );
 }
 
-export default App;
+export default (props) => (
+  <MariaCtx>
+    <App {...props} />
+  </MariaCtx>  
+)

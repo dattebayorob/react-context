@@ -19,7 +19,8 @@
   color: white;
 }
 
-.App-link {
+.App-header > div a {
+  display: block;
   color: #61dafb;
 }
 
