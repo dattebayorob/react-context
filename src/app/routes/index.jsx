@@ -1,17 +1,19 @@
 import React from 'react';
-import { HashRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
-import Dos from '../../components/Dos';
-import { Tres } from '../../components/Tres';
-import { Un } from '../../components/Un';
+import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
+import AllComponentes from '../../components/AllComponentes';
+import { JoaoCtx } from '../context/Joao';
+import { JoseCtx } from '../context/jose';
+import { MariaCtx } from '../context/Maria';
+import WrapedContext from '../context/WrapedContext';
 
 
 export const Routes = () => (
     <Router>
         <Switch>
-            <Route exact path="/un" component={Un} />
-            <Route exact path="/un/dos" component={Dos} />
-            <Route exact path="/un/dos/tres" component={Tres} />
-            <Redirect from="/" to="/un" />
+            <WrapedContext contexts={[JoseCtx, JoaoCtx, MariaCtx]}>
+                <Route exact path="/contexts" component={AllComponentes} />
+                <Redirect from="/" to="/contexts" />
+            </WrapedContext>
         </Switch>
     </Router>
 )

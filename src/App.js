@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import { Routes } from './app/routes';
-import { MariaCtx } from './app/context/Maria';
 
 function App() {
   return (
@@ -17,8 +16,4 @@ function App() {
   );
 }
 
-export default (props) => (
-  <MariaCtx>
-    <App {...props} />
-  </MariaCtx>  
-)
+export default (props) => <App {...props} />
