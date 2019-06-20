@@ -12,15 +12,16 @@ export default props => {
     const joao = useContext(JoaoContext)
     const madalena = useContext(MadalenaContext)
     const joaquim = useContext(JoaquimContext)
-
     return (
         <div>
-                <Link to="/jose">
+                <Link to="/jose" onClick={() => jose.setCount(count => count + 1)}>
                     <b style={{color:'red'}}> Jose Context working: </b>
                 </Link>{jose.msg}
             <br />
-            <b style={{color:'red'}}>
-                Maria Context working:  </b>{maria.msg} <br />
+            <Link to="/maria" onClick={() => maria.setCount(count => count + 1)}>
+                <b style={{color:'red'}} > Maria Context working:  </b>
+            </Link>{maria.msg} 
+            <br />
             <b style={{color:'red'}}>
                 Joao Context working: </b>{joao.msg} <br />
             <b style={{color:'red'}}>

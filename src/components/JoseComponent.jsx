@@ -7,7 +7,7 @@ export const JoseComponent = props => {
 
     return (
         <Link to="/contexts">
-        {jose.msg}
+        {jose.msg}: Clicked ({jose.count})
         </Link>
     )
 }

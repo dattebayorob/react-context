@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch as SwitchRouter } from 'react-router-dom';
 import AllComponentes from '../../components/AllComponentes';
 import { JoseComponent } from '../../components/JoseComponent';
 import { Maria } from '../../views/Maria';
@@ -10,16 +10,25 @@ import { MadalenaCtx } from '../context/Madalena';
 import { MariaCtx } from '../context/Maria';
 import { WrapedContext } from '../context/WrapedContext';
 
-const ContextRoute = ({contexts, ...props}) => <WrapedContext {...{contexts}}>
-                                                    <Route {...props} />
-                                                </WrapedContext>
+const contexts = [
+    JoseCtx,
+    JoaoCtx,
+    MariaCtx,
+    MadalenaCtx,
+    JoaquimCtx 
+]
 
 export const Routes = () => (
     <Router>
-        <Switch>
-            <ContextRoute exact path="/jose" component={JoseComponent} contexts={[ JoseCtx ]}/>
-            <ContextRoute path="/contexts" component={AllComponentes} contexts={[ JoseCtx, JoaoCtx, MariaCtx, MadalenaCtx, JoaquimCtx ]} />
-            <ContextRoute path="/maria" component={Maria} contexts={[ MariaCtx ]} />
+        <Switch contexts={contexts}>
+            <Route path="/contexts" component={AllComponentes} />
+            <Route path="/maria" component={Maria} />
+            <Route path="/jose" component={JoseComponent} />
         </Switch>
     </Router>
 )
+
+const Switch = ({ contexts, children }) => (
+    <WrapedContext {...{ contexts }}>
+        <SwitchRouter>{children}</SwitchRouter>
+    </WrapedContext>)

@@ -7,6 +7,9 @@ export const MariaForm = props => {
         <strong>
             <Link to="/maria/">
                 FORM: {props.msg}
+            </Link><br />
+            <Link to="/contexts">
+                ALL COMPONENTS
             </Link>
         </strong>
     )
